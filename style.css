@@ -1,0 +1,75 @@
+/* Personalizações e animações */
+
+/* Animação suave para botões de filtro */
+.filter-btn {
+  padding: 0.375rem 0.875rem;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #B3395B;
+  background-color: rgba(248, 218, 226, 0.4);
+  border: 1px solid rgba(179, 57, 91, 0.15);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.filter-btn:hover {
+  background-color: #F8DAE2;
+  color: #FF2A75;
+}
+
+.filter-btn.active {
+  background-color: #B3395B;
+  color: #ffffff;
+  border-color: #B3395B;
+  box-shadow: 0 2px 4px rgba(179, 57, 91, 0.2);
+}
+
+/* Blocos de texto/código copiáveis */
+.copyable-block {
+  position: relative;
+  background-color: #F7F3E9;
+  border: 1px border rgba(179, 57, 91, 0.15);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-family: monospace;
+  font-size: 0.875rem;
+  color: #2B2A2A;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copyable-block:hover {
+  border-color: #FF2A75;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(255, 42, 117, 0.1);
+}
+
+/* Efeito ao clicar para copiar */
+.copyable-block:active {
+  transform: scale(0.99);
+}
+
+/* Ajustes dinâmicos de tamanho da fonte base via JS */
+.font-size-sm .copyable-block { font-size: 0.75rem; }
+.font-size-base .copyable-block { font-size: 0.875rem; }
+.font-size-lg .copyable-block { font-size: 1rem; }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F7F3E9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #F8DAE2;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B3395B;
+}
