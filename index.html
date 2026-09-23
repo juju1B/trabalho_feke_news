@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Material de Estudo - Cópia Rápida</title>
+  <title>Material de Estudo</title>
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -38,20 +38,16 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
       <div class="flex items-center space-x-3">
         <div class="p-2 bg-pink-destaque text-white rounded-xl shadow-md">
-          <i class="ph ph-copy text-2xl"></i>
+          <i class="ph ph-book-open text-2xl"></i>
         </div>
         <div>
-          <h1 class="text-2xl font-bold text-magenta-suave leading-tight">Estudo & Cópia Rápida</h1>
-          <p class="text-xs text-magenta-suave/80 font-medium">Sua central de resumos, códigos e anotações</p>
+          <h1 class="text-2xl font-bold text-magenta-suave leading-tight">Painel de Estudos</h1>
+          <p class="text-xs text-magenta-suave/80 font-medium">Sua central de resumos, conceitos e anotações</p>
         </div>
       </div>
 
       <!-- Quick Actions Bar -->
       <div class="flex items-center space-x-2">
-        <button id="btn-copy-all" class="px-3 py-1.5 bg-magenta-suave text-white text-xs font-semibold rounded-lg shadow hover:bg-pink-destaque transition-all flex items-center gap-1.5">
-          <i class="ph ph-squares-four text-base"></i> Copiar Tudo Visível
-        </button>
-        
         <!-- Size Controls -->
         <div class="flex items-center bg-white/60 border border-magenta-suave/20 rounded-lg p-1">
           <button id="font-decrease" class="p-1 hover:bg-rosa-pastel rounded text-magenta-suave" title="Diminuir Fonte">
@@ -104,15 +100,9 @@
   <!-- Footer -->
   <footer class="bg-rosa-pastel/50 border-t border-magenta-suave/10 py-6 mt-auto">
     <div class="max-w-7xl mx-auto px-4 text-center text-xs text-magenta-suave/80">
-      <p>Desenvolvido para facilitar seus estudos diários. Clique em qualquer trecho para copiar rapidamente!</p>
+      <p>Desenvolvido para facilitar seus estudos diários.</p>
     </div>
   </footer>
-
-  <!-- Toast Notification Container -->
-  <div id="toast" class="fixed bottom-5 right-5 bg-magenta-suave text-white px-4 py-3 rounded-xl shadow-xl flex items-center space-x-3 translate-y-20 opacity-0 transition-all duration-300 z-50">
-    <i class="ph ph-check-circle text-2xl text-pink-destaque"></i>
-    <span id="toast-message" class="text-sm font-medium">Copiado para a área de transferência!</span>
-  </div>
 
   <!-- JavaScript -->
   <script src="script.js"></script>

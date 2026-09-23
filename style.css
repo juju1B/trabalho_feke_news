@@ -25,35 +25,22 @@
   box-shadow: 0 2px 4px rgba(179, 57, 91, 0.2);
 }
 
-/* Blocos de texto/código copiáveis */
-.copyable-block {
+/* Blocos de leitura de código/texto */
+.code-block {
   position: relative;
   background-color: #F7F3E9;
-  border: 1px border rgba(179, 57, 91, 0.15);
+  border: 1px solid rgba(179, 57, 91, 0.15);
   border-radius: 0.5rem;
   padding: 0.75rem 1rem;
   font-family: monospace;
   font-size: 0.875rem;
   color: #2B2A2A;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.copyable-block:hover {
-  border-color: #FF2A75;
-  background-color: #ffffff;
-  box-shadow: 0 2px 8px rgba(255, 42, 117, 0.1);
-}
-
-/* Efeito ao clicar para copiar */
-.copyable-block:active {
-  transform: scale(0.99);
 }
 
 /* Ajustes dinâmicos de tamanho da fonte base via JS */
-.font-size-sm .copyable-block { font-size: 0.75rem; }
-.font-size-base .copyable-block { font-size: 0.875rem; }
-.font-size-lg .copyable-block { font-size: 1rem; }
+.font-size-sm .code-block { font-size: 0.75rem; }
+.font-size-base .code-block { font-size: 0.875rem; }
+.font-size-lg .code-block { font-size: 1rem; }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {

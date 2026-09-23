@@ -48,10 +48,7 @@ const studyCards = [
 const cardsContainer = document.getElementById('cards-container');
 const searchInput = document.getElementById('search-input');
 const categoryButtons = document.querySelectorAll('.filter-btn');
-const toast = document.getElementById('toast');
-const toastMessage = document.getElementById('toast-message');
 const noResults = document.getElementById('no-results');
-const btnCopyAll = document.getElementById('btn-copy-all');
 const btnFontIncrease = document.getElementById('font-increase');
 const btnFontDecrease = document.getElementById('font-decrease');
 
@@ -92,10 +89,7 @@ function renderCards() {
         </div>
         
         <div class="relative group my-3">
-          <pre class="copyable-block text-slate-800 whitespace-pre-wrap break-words">${escapeHTML(card.content)}</pre>
-          <button class="btn-copy-card absolute right-2 top-2 p-1.5 bg-magenta-suave text-white rounded hover:bg-pink-destaque transition-opacity opacity-0 group-hover:opacity-100 shadow" title="Copiar bloco">
-            <i class="ph ph-copy text-sm"></i>
-          </button>
+          <pre class="code-block text-slate-800 whitespace-pre-wrap break-words">${escapeHTML(card.content)}</pre>
         </div>
       </div>
 
@@ -103,25 +97,8 @@ function renderCards() {
         <div class="flex flex-wrap gap-1">
           ${card.tags.map(tag => `<span class="text-[11px] text-magenta-suave/70 bg-bege-retro px-2 py-0.5 rounded-md">#${tag}</span>`).join('')}
         </div>
-        <button class="text-xs text-pink-destaque font-medium hover:underline flex items-center gap-1 btn-quick-copy">
-          <i class="ph ph-copy-simple"></i> Copiar
-        </button>
       </div>
     `;
-
-    // Eventos de cópia individual
-    const copyBlock = cardEl.querySelector('.copyable-block');
-    const copyBtn = cardEl.querySelector('.btn-copy-card');
-    const quickCopyBtn = cardEl.querySelector('.btn-quick-copy');
-
-    const copyAction = () => {
-      copyToClipboard(card.content);
-      showToast(`"<strong>${card.title}</strong>" copiado!`);
-    };
-
-    copyBlock.addEventListener('click', copyAction);
-    copyBtn.addEventListener('click', (e) => { e.stopPropagation(); copyAction(); });
-    quickCopyBtn.addEventListener('click', (e) => { e.stopPropagation(); copyAction(); });
 
     cardsContainer.appendChild(cardEl);
   });
@@ -132,25 +109,6 @@ function escapeHTML(str) {
   return str.replace(/[&<>'"]/g, 
     tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
   );
-}
-
-// Função de copiar para a área de transferência
-function copyToClipboard(text) {
-  navigator.clipboard.writeText(text).catch(err => {
-    console.error('Erro ao copiar: ', err);
-  });
-}
-
-// Exibir Toast
-let toastTimeout;
-function showToast(message) {
-  toastMessage.innerHTML = message;
-  toast.classList.remove('translate-y-20', 'opacity-0');
-  
-  clearTimeout(toastTimeout);
-  toastTimeout = setTimeout(() => {
-    toast.classList.add('translate-y-20', 'opacity-0');
-  }, 2500);
 }
 
 // Filtros
@@ -167,26 +125,6 @@ categoryButtons.forEach(btn => {
 searchInput.addEventListener('input', (e) => {
   currentSearch = e.target.value;
   renderCards();
-});
-
-// Copiar Todos os visíveis
-btnCopyAll.addEventListener('click', () => {
-  const visibleCards = studyCards.filter(card => {
-    const matchesCategory = currentCategory === 'all' || card.category === currentCategory;
-    const matchesSearch = card.title.toLowerCase().includes(currentSearch.toLowerCase()) ||
-                          card.tags.some(tag => tag.toLowerCase().includes(currentSearch.toLowerCase())) ||
-                          card.content.toLowerCase().includes(currentSearch.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
-
-  if (visibleCards.length === 0) {
-    showToast("Nenhum item visível para copiar!");
-    return;
-  }
-
-  const allContent = visibleCards.map(c => `// ${c.title}\n${c.content}`).join('\n\n');
-  copyToClipboard(allContent);
-  showToast(`${visibleCards.length} blocos copiados juntos!`);
 });
 
 // Controle de tamanho de fonte
